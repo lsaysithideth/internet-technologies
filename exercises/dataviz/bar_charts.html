@@ -12,10 +12,25 @@
     <div id="bar-chart-container"></div>
     <br>
 
+    <!-- Need below script to import Plotly js package -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script type="text/javascript">
 
         console.log("MAKING SOME CHARTS...")
+
+//Comment out working example
+//         // copied from: https://plotly.com/javascript/bar-charts/
+//         // only works when you IMPORT Plotly package or library with script tag
+
+//         var data = [
+//   {
+//     x: ['giraffes', 'orangutans', 'monkeys'],
+//     y: [20, 14, 23],
+//     type: 'bar'
+//   }
+// ];
+// // need specify ID with div on page "bar-chart-container"
+// Plotly.newPlot('bar-chart-container', data);
 
         // SETUP
 
@@ -33,6 +48,22 @@
 
         console.log("BAR DATA", barData)
         // todo: write some JavaScript here!
+
+//put genre on x axis and viewers on y axis, need to loop for each in the variables
+var genres = []
+var viewers = []
+
+barData.forEach(function(item){
+    genres.push(item["genre"])
+    viewers.push(item["viewers"])
+})
+
+console.log("GENRES", genres)
+console.log("VIEWERS", viewers)
+
+var data = [{x: genres, y: viewers, type: 'bar'}]
+Plotly.newPlot('bar-chart-container', data);
+
 
 
     </script>
