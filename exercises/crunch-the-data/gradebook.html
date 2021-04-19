@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Gradebook Data Challenge</title>
+
+    <!-- Need below line for d3 to work -->
+    <script src="https://d3js.org/d3-array.v2.min.js"></script>
+
 </head>
 <body>
 
@@ -43,8 +47,40 @@
 
         console.log("GRADEBOOK", gradebook)
 
+        console.log("DOWNLOAD DATE:", gradebook["downloadDate"])
+    
+        console.log("NUMBER OF STUDENTS:", gradebook["students"].length)
+
+        // //referencing each object in array and calling it "item", below shows final grade for each student looped
+        // gradebook["students"].forEach(function(item){
+        //     console.log(item["studentId"],item["finalGrade"])
+
+        // })
+
+//push method adds some kind of new item to an array
+
+var grades = []
+var gradesum = 0 //acumulating variables in this line
+gradebook["students"].forEach(function(item){
+    grades.push(item["finalGrade"])
+    gradesum += item["finalGrade"]
+    //append just the final grade to our array
+})
+
+//perform math on our array of grade
+
+// sum / count ***Need var gradeSum = 0 above
+console.log("GRADES:", grades)
+console.log("SUM:", gradesum)
+console.log("AVG:", gradesum / grades.length)
 
 
+
+// using script line in head above, can enable d3 searched from online here:
+// https://github.com/d3/d3-array#median
+
+        console.log("MEAN", d3.mean(grades))
+        console.log("MEDIAN", d3.median(grades))
 
 
     </script>
